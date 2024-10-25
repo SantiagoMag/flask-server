@@ -11,7 +11,7 @@ def preprocessing(df):
     lb_encoder_loan_intent = joblib.load('lb_encoder_loan_intent.pkl')
     lb_encoder_cb_person_default_on_file = joblib.load('lb_encoder_cb_person_default_on_file.pkl')
     
-    df["home_ownership"] = lb_encoder_home_ownership.transform(df["home_ownership"])  
+    df["person_home_ownership"] = lb_encoder_home_ownership.transform(df["person_home_ownership"])  
     df["loan_intent"] = lb_encoder_loan_intent.transform(df["loan_intent"])  
     df["cb_person_default_on_file"] = lb_encoder_cb_person_default_on_file.transform(df["cb_person_default_on_file"])  
     df["loan_grade"] = transform_loan_grade(df["loan_grade"])  
