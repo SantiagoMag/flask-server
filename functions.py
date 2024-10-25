@@ -6,10 +6,10 @@ def transform_loan_grade(data):
 
 def preprocessing(df):
 
-    scaler = joblib.load('scaler.pkl')
-    lb_encoder_home_ownership = joblib.load('lb_encoder_home_ownership.pkl')
-    lb_encoder_loan_intent = joblib.load('lb_encoder_loan_intent.pkl')
-    lb_encoder_cb_person_default_on_file = joblib.load('lb_encoder_cb_person_default_on_file.pkl')
+    scaler = joblib.load('exports/scaler.pkl')
+    lb_encoder_home_ownership = joblib.load('exports/lb_encoder_home_ownership.pkl')
+    lb_encoder_loan_intent = joblib.load('exports/lb_encoder_loan_intent.pkl')
+    lb_encoder_cb_person_default_on_file = joblib.load('exports/lb_encoder_cb_person_default_on_file.pkl')
     
     df["person_home_ownership"] = lb_encoder_home_ownership.transform(df["person_home_ownership"])  
     df["loan_intent"] = lb_encoder_loan_intent.transform(df["loan_intent"])  

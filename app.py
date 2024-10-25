@@ -7,8 +7,8 @@ from functions import preprocessing
 app = Flask(__name__)
 
 # Cargar el modelo
-modelo = joblib.load('modelo_entrenado.pkl')
-scaler = joblib.load('scaler.pkl')
+modelo = joblib.load('exports/modelo_entrenado.pkl')
+scaler = joblib.load('exports/scaler.pkl')
 
 @app.route('/api/predict', methods=['POST'])
 def predecir():
