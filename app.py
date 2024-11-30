@@ -14,22 +14,26 @@ scaler = joblib.load('exports/scaler.pkl')
 def predecir():
     # Obtener datos JSON del request
     datos = request.get_json()
-    
+    print(datos,flush=True)
+    datos = datos["Inputs"]["data"]
+    print(datos,flush=True)
     # Convertir los datos a un DataFrame de pandas
     # Supongamos que los datos contienen características como: edad, ingresos, historial_crediticio, etc.
-    df = pd.DataFrame([datos])
+    df = pd.DataFrame(datos)
     df = preprocessing(df)
     print(df, flush=True)
 
     # Realizar la predicción
     prediccion = modelo.predict(df)
-    
+    resultado = {
+                    "Results" : [int(i) for i in prediccion]
+    }
     print(prediccion, flush=True)
     # Devolver la respuesta en formato JSON
-    resultado = {   
-                 'prediction': bool(prediccion[0]),
-                 'probability': float(prediccion[0])
-                 }
+    #resultado = {   
+     #            'prediction': bool(prediccion[0]),
+      #           'probability': float(prediccion[0])
+      #           }
     print(resultado, flush=True)  
     return jsonify(resultado)
 
